@@ -35,7 +35,7 @@
 #import <objc/runtime.h>
 
 
-#define HH_PANNING_ANIMATION_DURATION	0.1f
+#define HH_PANNING_ANIMATION_DURATION	0.15f
 #define HH_PANNING_BOUNCE_DISTANCE		0
 #define HH_PANNING_MINIMUM_PAN			0.f
 #define HH_PANNING_MAXIMUM_PAN			0.0f	// Set to 0.0f for full view width
@@ -345,7 +345,7 @@ static NSString *const												kTranslationContext		= @"translation";
 		if (animated) {
 			[UIView animateWithDuration:duration
 								  delay:0.0f
-								options:UIViewAnimationOptionCurveEaseOut
+								options:7<<16
 							 animations:animations
 							 completion:completion];
 		}
@@ -386,18 +386,18 @@ static NSString *const												kTranslationContext		= @"translation";
 
 				[UIView animateWithDuration:duration
 									  delay:0.0f
-									options:UIViewAnimationOptionCurveEaseOut
+									options:7<<16
 								 animations:animations
 								 completion:^(BOOL finished) {
 									 [UIView animateWithDuration:bounceDuration
 														   delay:0.0f
-														 options:UIViewAnimationOptionCurveLinear
+														 options:7<<16
 													  animations:^{
 														  self.translation = bounceTranslation;
 													  } completion:^(BOOL finished) {
 														  [UIView animateWithDuration:bounceDuration
 																				delay:0.0f
-																			  options:UIViewAnimationOptionCurveLinear
+																			  options:7<<16
 																		   animations:animations
 																		   completion:completion];
 													  }];
@@ -406,7 +406,7 @@ static NSString *const												kTranslationContext		= @"translation";
 			else {
 				[UIView animateWithDuration:duration
 									  delay:0.0f
-									options:UIViewAnimationOptionCurveEaseOut
+									options:7<<16
 								 animations:animations
 								 completion:completion];
 			}
